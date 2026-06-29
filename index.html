@@ -24,6 +24,13 @@ p{margin:14px 0;line-height:1.8}
 .info{position:relative;z-index:2;color:#fff;text-align:center;width:min(900px,90%)}
 .info h2{font-family:Anton;font-size:68px;margin-bottom:15px;text-shadow:0 0 18px #4da3ff}
 .info .box{background:rgba(255,255,255,.08);padding:28px;border-radius:20px;line-height:2;font-size:22px}
+
+.icon{width:20px;height:20px;vertical-align:middle;margin-right:8px;filter:drop-shadow(0 0 4px rgba(255,255,255,.3))}
+.action-buttons{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:12px 0}
+.link-btn{display:inline-flex;align-items:center;padding:10px 16px;border-radius:30px;background:rgba(0,0,0,.4);color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.2);box-shadow:0 0 18px rgba(77,163,255,.25);transition:.25s;font-weight:600}
+.link-btn:hover{transform:scale(1.05);box-shadow:0 0 24px #4da3ff}
+@media(max-width:768px){.action-buttons{flex-direction:column}.link-btn{justify-content:center;width:100%;}}
+
 canvas{position:fixed;inset:0}
 
 @media (max-width:768px){
@@ -80,13 +87,26 @@ h1{font-size:34px}
 <div class="box">
 📅 Technical Meeting : <b>4 Juli 2026</b><br>
 📅 Tournament : <b>27–28 Juli 2026</b><br>
-💰 Prizepool : <b>Rp1.250.000</b><br><br>
-🎥 <b>Live On</b><br>
-▶ YouTube : Volt Gim<br>
-🎵 TikTok : volt.gim<br><br>
-☎ <b>Contact Person</b><br>
-Wish — 081280372978<br>
-Vizard — 085719927181
+💰 Prizepool : <b>Rp1.250.000</b>
+
+<div style="margin-top:22px">
+🎥 <b>Live On: Volt Gim</b>
+<div class="action-buttons">
+<a class="link-btn" href="YOUTUBE_LINK" target="_blank"><img class="icon" src="icons/yt.svg">YouTube</a>
+<a class="link-btn" href="TIKTOK_LINK" target="_blank"><img class="icon" src="icons/tt.svg">TikTok</a>
+</div>
+
+☎ <b>Contact Person</b>
+<div class="action-buttons">
+<a class="link-btn" href="https://wa.me/628123456789" target="_blank"><img class="icon" src="icons/wa.svg">Wish</a>
+<a class="link-btn" href="https://wa.me/6285719927181" target="_blank"><img class="icon" src="icons/wa.svg">Vizard</a>
+</div>
+
+🎮 <b>Discord REBEL</b>
+<div class="action-buttons">
+<a class="link-btn" href="DISCORD_INVITE_LINK" target="_blank"><img class="icon" src="icons/dc.svg">Join Discord</a>
+</div>
+</div>
 </div>
 </div>
 </div>
