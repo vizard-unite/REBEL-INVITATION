@@ -92,8 +92,8 @@ h1{font-size:34px}
 <div style="margin-top:22px">
 🎥 <b>Live On: Volt Gim</b>
 <div class="action-buttons">
-<a class="link-btn" href="YOUTUBE_LINK" target="_blank"><img class="icon" src="icons/yt.svg">YouTube</a>
-<a class="link-btn" href="TIKTOK_LINK" target="_blank"><img class="icon" src="icons/tt.svg">TikTok</a>
+<a class="link-btn" href="https://www.youtube.com/@voltgim" target="_blank"><img class="icon" src="icons/yt.svg">YouTube</a>
+<a class="link-btn" href="https://www.tiktok.com/@volt.gim" target="_blank"><img class="icon" src="icons/tt.svg">TikTok</a>
 </div>
 
 ☎ <b>Contact Person</b>
@@ -104,7 +104,7 @@ h1{font-size:34px}
 
 🎮 <b>Discord REBEL</b>
 <div class="action-buttons">
-<a class="link-btn" href="DISCORD_INVITE_LINK" target="_blank"><img class="icon" src="icons/dc.svg">Join Discord</a>
+<a class="link-btn" href="https://discord.gg/snq5yRdttk" target="_blank"><img class="icon" src="icons/dc.svg">Join Discord</a>
 </div>
 </div>
 </div>
@@ -114,11 +114,18 @@ h1{font-size:34px}
 <audio id="bgm" loop>
 <source src="music.mp3" type="audio/mpeg">
 </audio>
-
+<script src="guest.js"></script>
 <script>
-const params=new URLSearchParams(location.search);
-const to=params.get("to");
-if(to) document.getElementById("hello").textContent="Hello, "+to+"!";
+
+const params = new URLSearchParams(location.search);
+const id = params.get("id");
+
+if (id && GUESTS[id]) {
+    hello.textContent = "Hello, " + GUESTS[id] + "!";
+} else {
+    hello.textContent = "Hello, Trainer!";
+}
+
 const scene=document.getElementById("scene");
 const welcome=document.getElementById("welcome");
 const bgm=document.getElementById("bgm");
@@ -173,6 +180,7 @@ function launchConfetti(count=250){
  });
  confetti=confetti.filter(cf=>cf.y<c.height+40);
 })();
+
 
 </script>
 <button id="music" onclick="if(bgm.paused){bgm.play();this.textContent='🔊 Music On'}else{bgm.pause();this.textContent='🔈 Music Off'}">🔊 Music On</button>
