@@ -1,535 +1,667 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>REBEL Invitation</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>REBEL Invitation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;500;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      /* overflow: hidden; */
+      font-family: Montserrat, sans-serif;
+      background: #000;
+    }
+
+    #bg {
+      position: fixed;
+      inset: 0;
+      background: url("poster.jpeg") center/cover no-repeat;
+      animation: zoom 18s ease-in-out infinite alternate;
+    }
+
+    #bg:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(4px);
+    }
+
+    @keyframes zoom {
+      to {
+        transform: scale(1.08);
       }
-      html,
-      body {
-        height: 100%;
-        /* overflow: hidden; */
-        font-family: Montserrat, sans-serif;
-        background: #000;
-      }
-      #bg {
-        position: fixed;
-        inset: 0;
-        background: url("poster.jpeg") center/cover no-repeat;
-        animation: zoom 18s ease-in-out infinite alternate;
-      }
-      #bg:after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.45);
-        backdrop-filter: blur(4px);
-      }
-      @keyframes zoom {
-        to {
-          transform: scale(1.08);
-        }
-      }
-      .screen {
+    }
+
+    /* .screen {
         position: fixed;
         inset: 0;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: 1.2s;
-      }
-      .hidden {
-        opacity: 0;
-        pointer-events: none;
-      }
-      .card {
-        position: relative;
-        z-index: 2;
-        background: rgba(10, 20, 60, 0.45);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(14px);
-        padding: 40px;
-        border-radius: 24px;
-        width: min(90%, 700px);
-        text-align: center;
-        color: #fff;
-        box-shadow: 0 0 40px rgba(0, 120, 255, 0.3);
-      }
-      h1 {
-        font-family: Anton, sans-serif;
-        font-size: 64px;
-        letter-spacing: 2px;
-      }
-      p {
-        margin: 14px 0;
-        line-height: 1.8;
-      }
-      #openBtn {
-        margin-top: 25px;
-        padding: 16px 34px;
-        border: none;
-        border-radius: 50px;
-        background: #2d78ff;
-        color: #fff;
-        font-weight: 700;
-        font-size: 18px;
-        cursor: pointer;
-        box-shadow: 0 0 25px #2d78ff;
-        transition: 0.3s;
-      }
-      #openBtn:hover {
-        transform: scale(1.05);
-      }
-      #music {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 10;
-        padding: 10px 16px;
-        border-radius: 30px;
-        background: rgba(0, 0, 0, 0.4);
-        color: #fff;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        display: none;
-      }
-      #scene {
-        opacity: 0;
-      }
-      #overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(5, 18, 60, 0.72);
-        backdrop-filter: blur(6px);
-      }
-      .info {
-        position: relative;
-        z-index: 2;
-        color: #fff;
-        text-align: center;
-        width: min(900px, 90%);
-      }
-      .info h2 {
-        font-family: Anton;
-        font-size: 68px;
-        margin-bottom: 15px;
-        text-shadow: 0 0 18px #4da3ff;
-      }
-      .info .box {
-        background: rgba(255, 255, 255, 0.08);
-        padding: 28px;
-        border-radius: 20px;
-        line-height: 2;
-        font-size: 22px;
-      }
+      } */
+    .screen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-      .icon {
-        width: 20px;
-        height: 20px;
-        vertical-align: middle;
-        margin-right: 8px;
-        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
-      }
+    .hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      background: rgba(10, 20, 60, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(14px);
+      padding: 40px;
+      border-radius: 24px;
+      width: min(90%, 700px);
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 0 40px rgba(0, 120, 255, 0.3);
+    }
+
+    h1 {
+      font-family: Anton, sans-serif;
+      font-size: 64px;
+      letter-spacing: 2px;
+    }
+
+    p {
+      margin: 14px 0;
+      line-height: 1.8;
+    }
+
+    #openBtn {
+      margin-top: 25px;
+      padding: 16px 34px;
+      border: none;
+      border-radius: 50px;
+      background: #2d78ff;
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 0 25px #2d78ff;
+      transition: 0.3s;
+    }
+
+    #openBtn:hover {
+      transform: scale(1.05);
+    }
+
+    #music {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+      padding: 10px 16px;
+      border-radius: 30px;
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: none;
+    }
+
+    /* #scene {
+        opacity: 0;
+      } */
+    #welcome {
+      position: fixed;
+      inset: 0;
+    }
+
+    #scene {
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      min-height: 100vh;
+
+      overflow-y: auto;
+    }
+
+    #overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(5, 18, 60, 0.72);
+      backdrop-filter: blur(6px);
+    }
+
+    .info {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      text-align: center;
+      width: min(900px, 90%);
+    }
+
+    .info h2 {
+      font-family: Anton;
+      font-size: 68px;
+      margin-bottom: 15px;
+      text-shadow: 0 0 18px #4da3ff;
+    }
+
+    .info .box {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 28px;
+      border-radius: 20px;
+      line-height: 2;
+      font-size: 22px;
+    }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 8px;
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+    }
+
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 16px;
+      border-radius: 30px;
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 18px rgba(77, 163, 255, 0.25);
+      transition: 0.25s;
+      font-weight: 600;
+    }
+
+    .link-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 24px #4da3ff;
+    }
+
+    @media (max-width: 768px) {
       .action-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        flex-wrap: wrap;
-        margin: 12px 0;
+        flex-direction: column;
       }
+
       .link-btn {
-        display: inline-flex;
-        align-items: center;
-        padding: 10px 16px;
-        border-radius: 30px;
-        background: rgba(0, 0, 0, 0.4);
-        color: #fff;
-        text-decoration: none;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 0 18px rgba(77, 163, 255, 0.25);
-        transition: 0.25s;
-        font-weight: 600;
-      }
-      .link-btn:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 24px #4da3ff;
-      }
-      @media (max-width: 768px) {
-        .action-buttons {
-          flex-direction: column;
-        }
-        .link-btn {
-          justify-content: center;
-          width: 100%;
-        }
-      }
-
-      canvas {
-        position: fixed;
-        inset: 0;
-      }
-
-      @media (max-width: 768px) {
-        html,
-        body {
-          overflow: auto;
-        }
-        .card {
-          width: 92%;
-          padding: 24px 18px;
-          border-radius: 18px;
-        }
-        h1 {
-          font-size: 42px;
-        }
-        #hello {
-          font-size: 22px !important;
-        }
-        .card p {
-          font-size: 16px;
-          line-height: 1.6;
-        }
-        #openBtn {
-          width: 100%;
-          padding: 15px 20px;
-          font-size: 17px;
-        }
-        .info {
-          width: 94%;
-        }
-        .info h2 {
-          font-size: 40px;
-          line-height: 1.1;
-        }
-        .info .box {
-          padding: 18px;
-          font-size: 16px;
-          line-height: 1.8;
-          word-break: break-word;
-        }
-        #music {
-          top: 12px;
-          right: 12px;
-          padding: 8px 12px;
-          font-size: 14px;
-        }
-        canvas {
-          pointer-events: none;
-        }
-      }
-      @media (max-width: 420px) {
-        .card {
-          padding: 20px 16px;
-        }
-        h1 {
-          font-size: 34px;
-        }
-        #hello {
-          font-size: 20px !important;
-        }
-        .info h2 {
-          font-size: 32px;
-        }
-        .info .box {
-          font-size: 15px;
-          padding: 16px;
-        }
-      }
-
-      /* ---------- MODAL ---------- */
-
-      .modal {
-        position: fixed;
-        inset: 0;
-
-        display: flex;
         justify-content: center;
-        align-items: center;
+        width: 100%;
+      }
+    }
 
-        background: rgba(0, 0, 0, 0.65);
+    canvas {
+      position: fixed;
+      inset: 0;
+    }
 
-        backdrop-filter: blur(8px);
+    @media (max-width: 768px) {
 
-        opacity: 0;
-        visibility: hidden;
-
-        transition: 0.35s;
-
-        z-index: 999;
+      html,
+      body {
+        overflow: auto;
       }
 
-      .modal.show {
-        opacity: 1;
-        visibility: visible;
+      .card {
+        width: 92%;
+        padding: 24px 18px;
+        border-radius: 18px;
       }
 
-      .modal-card {
-        width: min(420px, 92%);
-
-        background: rgba(10, 20, 60, 0.65);
-
-        border: 1px solid rgba(255, 255, 255, 0.15);
-
-        border-radius: 24px;
-
-        padding: 28px;
-
-        color: #fff;
-
-        backdrop-filter: blur(20px);
-
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-
-        transform: translateY(30px) scale(0.95);
-
-        transition: 0.35s;
+      h1 {
+        font-size: 42px;
       }
 
-      .modal.show .modal-card {
-        transform: translateY(0) scale(1);
+      #hello {
+        font-size: 22px !important;
       }
 
-      .modal-title {
-        font-size: 28px;
-
-        font-weight: 700;
-
-        text-align: center;
-
-        margin-bottom: 8px;
+      .card p {
+        font-size: 16px;
+        line-height: 1.6;
       }
 
-      .modal-subtitle {
-        opacity: 0.7;
-
-        text-align: center;
-
-        margin-bottom: 25px;
+      #openBtn {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 17px;
       }
 
-      .form-group {
-        margin-bottom: 18px;
+      .info {
+        width: 94%;
       }
 
-      .form-group label {
-        display: block;
+      .info h2 {
+        font-size: 40px;
+        line-height: 1.1;
+      }
 
-        margin-bottom: 8px;
+      .info .box {
+        padding: 18px;
+        font-size: 16px;
+        line-height: 1.8;
+        word-break: break-word;
+      }
 
+      #music {
+        top: 12px;
+        right: 12px;
+        padding: 8px 12px;
         font-size: 14px;
       }
 
-      .form-group input {
-        width: 100%;
+      canvas {
+        pointer-events: none;
+      }
+    }
 
-        padding: 14px 16px;
-
-        border-radius: 12px;
-
-        border: 1px solid rgba(255, 255, 255, 0.15);
-
-        background: rgba(255, 255, 255, 0.08);
-
-        color: #fff;
-
-        outline: none;
-
-        transition: 0.2s;
+    @media (max-width: 420px) {
+      .card {
+        padding: 20px 16px;
       }
 
-      .form-group input:focus {
-        border-color: #2d78ff;
-
-        box-shadow: 0 0 20px rgba(45, 120, 255, 0.35);
+      h1 {
+        font-size: 34px;
       }
 
-      .modal-buttons {
-        display: flex;
-
-        gap: 12px;
-
-        margin-top: 28px;
+      #hello {
+        font-size: 20px !important;
       }
 
-      .modal-buttons button {
-        flex: 1;
-
-        border: none;
-
-        border-radius: 40px;
-
-        padding: 14px;
-
-        cursor: pointer;
-
-        font-weight: 700;
-
-        transition: 0.25s;
+      .info h2 {
+        font-size: 32px;
       }
 
-      .btn-primary {
-        background: #2d78ff;
-
-        color: white;
+      .info .box {
+        font-size: 15px;
+        padding: 16px;
       }
+    }
 
-      .btn-secondary {
-        background: rgba(255, 255, 255, 0.08);
+    /* ---------- MODAL ---------- */
 
-        color: white;
-      }
+    .modal {
+      position: fixed;
+      inset: 0;
 
-      .btn-primary:hover,
-      .btn-secondary:hover {
-        transform: translateY(-2px);
-      }
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
+      background: rgba(0, 0, 0, 0.65);
+
+      backdrop-filter: blur(8px);
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition: 0.35s;
+
+      z-index: 999;
+    }
+
+    .modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      width: min(420px, 92%);
+
+      background: rgba(10, 20, 60, 0.65);
+
+      border: 1px solid rgba(255, 255, 255, 0.15);
+
+      border-radius: 24px;
+
+      padding: 28px;
+
+      color: #fff;
+
+      backdrop-filter: blur(20px);
+
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+
+      transform: translateY(30px) scale(0.95);
+
+      transition: 0.35s;
+    }
+
+    .modal.show .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-title {
+      font-size: 28px;
+
+      font-weight: 700;
+
+      text-align: center;
+
+      margin-bottom: 8px;
+    }
+
+    .modal-subtitle {
+      opacity: 0.7;
+
+      text-align: center;
+
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-size: 14px;
+    }
+
+    .form-group input {
+      width: 100%;
+
+      padding: 14px 16px;
+
+      border-radius: 12px;
+
+      border: 1px solid rgba(255, 255, 255, 0.15);
+
+      background: rgba(255, 255, 255, 0.08);
+
+      color: #fff;
+
+      outline: none;
+
+      transition: 0.2s;
+    }
+
+    .form-group input:focus {
+      border-color: #2d78ff;
+
+      box-shadow: 0 0 20px rgba(45, 120, 255, 0.35);
+    }
+
+    .modal-buttons {
+      display: flex;
+
+      gap: 12px;
+
+      margin-top: 28px;
+    }
+
+    .modal-buttons button {
+      flex: 1;
+
+      border: none;
+
+      border-radius: 40px;
+
+      padding: 14px;
+
+      cursor: pointer;
+
+      font-weight: 700;
+
+      transition: 0.25s;
+    }
+
+    .btn-primary {
+      background: #2d78ff;
+
+      color: white;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+
+      color: white;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    #acceptBtn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 8px;
+
+      margin-top: 20px;
+
+      padding: 14px 28px;
+
+      border: none;
+      border-radius: 30px;
+
+      background: #2d78ff;
+
+      color: #fff;
+
+      font-size: 18px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      box-shadow: 0 0 18px rgba(77, 163, 255, 0.35);
+
+      transition: 0.25s;
+    }
+
+    #acceptBtn:hover {
+      transform: scale(1.05);
+
+      box-shadow: 0 0 26px #4da3ff;
+    }
+
+    #acceptBtn:active {
+      transform: scale(0.98);
+    }
+
+    #acceptBtn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    @media (max-width: 768px) {
       #acceptBtn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-
-        gap: 8px;
-
-        margin-top: 20px;
-
-        padding: 14px 28px;
-
-        border: none;
-        border-radius: 30px;
-
-        background: #2d78ff;
-
-        color: #fff;
-
-        font-size: 18px;
-        font-weight: 700;
-
-        cursor: pointer;
-
-        box-shadow: 0 0 18px rgba(77, 163, 255, 0.35);
-
-        transition: 0.25s;
+        width: 100%;
       }
+    }
+  </style>
 
-      #acceptBtn:hover {
-        transform: scale(1.05);
+  <style>
+    .notify {
 
-        box-shadow: 0 0 26px #4da3ff;
-      }
+      position: fixed;
+      inset: 0;
 
-      #acceptBtn:active {
-        transform: scale(0.98);
-      }
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      #acceptBtn:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-        transform: none;
-      }
+      background: rgba(0, 0, 0, .55);
 
-      @media (max-width: 768px) {
-        #acceptBtn {
-          width: 100%;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="bg"></div>
-    <canvas id="fx"></canvas>
+      backdrop-filter: blur(8px);
 
-    <div class="screen" id="welcome">
-      <div class="card">
-        <div style="color: #ffd24d; font-weight: 700; letter-spacing: 4px">
-          R∃BEL 1ST ANNIVERSARY
-        </div>
-        <h1>YOU'RE INVITED</h1>
-        <p id="hello" style="font-size: 28px; font-weight: 700">
-          Hello, Trainer!
-        </p>
-        <p>
-          Join us to celebrate our first anniversary tournament.<br /><b
-            >One Team • One Family • One Victory</b
-          >
-        </p>
-        <button id="openBtn">🎉 OPEN INVITATION</button>
+      opacity: 0;
+      visibility: hidden;
+
+      transition: .3s;
+
+      z-index: 9999;
+
+    }
+
+    .notify.show {
+
+      opacity: 1;
+      visibility: visible;
+
+    }
+
+    .notify-card {
+
+      width: min(380px, 90%);
+
+      background: rgba(10, 20, 60, .75);
+
+      border: 1px solid rgba(255, 255, 255, .15);
+
+      border-radius: 22px;
+
+      padding: 28px;
+
+      text-align: center;
+
+      color: #fff;
+
+      backdrop-filter: blur(20px);
+
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .45);
+
+    }
+
+    .notify-icon {
+
+      font-size: 54px;
+
+      margin-bottom: 12px;
+
+    }
+
+    .notify-card h3 {
+
+      margin-bottom: 10px;
+
+    }
+
+    .notify-card p {
+
+      opacity: .8;
+
+    }
+
+    #notifyClose {
+
+      margin-top: 20px;
+
+      width: 100%;
+
+      padding: 14px;
+
+      border: none;
+
+      border-radius: 30px;
+
+      background: #2d78ff;
+
+      color: white;
+
+      cursor: pointer;
+
+      font-weight: bold;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div id="bg"></div>
+  <canvas id="fx"></canvas>
+
+  <div class="screen" id="welcome">
+    <div class="card">
+      <div style="color: #ffd24d; font-weight: 700; letter-spacing: 4px">
+        R∃BEL 1ST ANNIVERSARY
       </div>
+      <h1>YOU'RE INVITED</h1>
+      <p id="hello" style="font-size: 28px; font-weight: 700">
+        Hello, Trainer!
+      </p>
+      <p>
+        Join us to celebrate our first anniversary tournament.<br /><b>One Team • One Family • One Victory</b>
+      </p>
+      <button id="openBtn">🎉 OPEN INVITATION</button>
     </div>
+  </div>
 
-    <div class="screen hidden" id="scene">
-      <div id="overlay"></div>
-      <div class="info">
-        <h2>REBEL 1st Anniversary</h2>
-        <div class="box">
-          📅 Technical Meeting : <b>4 Juli 2026</b><br />
-          📅 Tournament : <b>25-26 Juli 2026</b><br />
-          💰 Prizepool : <b>Rp1.250.000</b>
+  <div class="screen hidden" id="scene">
+    <div id="overlay"></div>
+    <div class="info">
+      <h2>REBEL 1st Anniversary</h2>
+      <div class="box">
+        📅 Technical Meeting : <b>4 Juli 2026</b><br />
+        📅 Tournament : <b>25-26 Juli 2026</b><br />
+        💰 Prizepool : <b>Rp1.250.000</b>
 
-          <div style="margin-top: 22px">
-            ☎ <b>Contact Person</b>
-            <div class="action-buttons">
-              <a
-                class="link-btn"
-                href="https://wa.me/628123456789"
-                target="_blank"
-                ><img class="icon" src="icons/wa.svg" />Wish</a
-              >
-              <a
-                class="link-btn"
-                href="https://wa.me/6285719927181"
-                target="_blank"
-                ><img class="icon" src="icons/wa.svg" />Vizard</a
-              >
-            </div>
+        <div>
+          <button id="acceptBtn">✅ ACCEPT INVITATION</button>
+        </div>
 
-            🎮 <b>Absen Disini</b>
-            <div class="action-buttons">
-              <a
-                class="link-btn"
-                href="https://discord.gg/kKfyVZ8qMC"
-                target="_blank"
-                ><img class="icon" src="icons/dc.svg" />Discord REBEL</a
-              >
-            </div>
+        <div style="margin-top: 22px">
+          ☎ <b>Contact Person</b>
+          <div class="action-buttons">
+            <a class="link-btn" href="https://wa.me/628123456789" target="_blank"><img class="icon"
+                src="icons/wa.svg" />Wish</a>
+            <a class="link-btn" href="https://wa.me/6285719927181" target="_blank"><img class="icon"
+                src="icons/wa.svg" />Vizard</a>
+          </div>
 
-            🎥 <b>Live On: Volt Gim</b>
-            <div class="action-buttons">
-              <a
-                class="link-btn"
-                href="https://www.youtube.com/@voltgim"
-                target="_blank"
-                ><img class="icon" src="icons/yt.svg" />YouTube</a
-              >
-              <a
-                class="link-btn"
-                href="https://www.tiktok.com/@volt.gim"
-                target="_blank"
-                ><img class="icon" src="icons/tt.svg" />TikTok</a
-              >
-            </div>
+          🎮 <b>Absen Disini</b>
+          <div class="action-buttons">
+            <a class="link-btn" href="https://discord.gg/kKfyVZ8qMC" target="_blank"><img class="icon"
+                src="icons/dc.svg" />Discord REBEL</a>
+          </div>
 
-            <button id="acceptBtn">✅ ACCEPT INVITATION</button>
+          🎥 <b>Live On: Volt Gim</b>
+          <div class="action-buttons">
+            <a class="link-btn" href="https://www.youtube.com/@voltgim" target="_blank"><img class="icon"
+                src="icons/yt.svg" />YouTube</a>
+            <a class="link-btn" href="https://www.tiktok.com/@volt.gim" target="_blank"><img class="icon"
+                src="icons/tt.svg" />TikTok</a>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <audio id="bgm" loop>
-      <source src="music.mp3" type="audio/mpeg" />
-    </audio>
+  <audio id="bgm" loop>
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
 
-    <button
-      id="music"
-      onclick="
+  <button id="music" onclick="
         if (bgm.paused) {
           bgm.play();
           this.textContent = '🔊 Music On';
@@ -537,162 +669,295 @@
           bgm.pause();
           this.textContent = '🔈 Music Off';
         }
-      "
-    >
-      🔊 Music On
-    </button>
+      ">
+    🔊 Music On
+  </button>
 
-     <!-- Registration Modal -->
-    <div id="inviteModal" class="modal">
-      <div class="modal-card">
-        <div class="modal-title">🎮 Registration</div>
+  <!-- Registration Modal -->
+  <div id="inviteModal" class="modal">
+    <div class="modal-card">
+      <div class="modal-title">🎮 Registration</div>
 
-        <div class="modal-subtitle">Please fill your information.</div>
+      <div class="modal-subtitle">Please fill your information.</div>
 
-        <div class="form-group">
-          <label>IGN Name</label>
-          <input id="ign" type="text" placeholder="Wish" />
-        </div>
+      <div class="form-group">
+        <label>IGN Name</label>
+        <input id="ign" type="text" placeholder="Wish" />
+      </div>
 
-        <div class="form-group">
-          <label>Player ID</label>
-          <input id="playerId" type="text" placeholder="AB12XYZ" />
-        </div>
+      <div class="form-group">
+        <label>Player ID</label>
+        <input id="playerId" type="text" placeholder="AB12XYZ" />
+      </div>
 
-        <div class="modal-buttons">
-          <button id="btnCancel" class="btn-secondary">Cancel</button>
+      <div class="modal-buttons">
+        <button id="btnCancel" class="btn-secondary">Cancel</button>
 
-          <button id="btnSubmit" class="btn-primary">Submit</button>
-        </div>
+        <button id="btnSubmit" class="btn-primary">Submit</button>
       </div>
     </div>
+  </div>
 
-    <script>
-      const params = new URLSearchParams(location.search);
-      const id = params.get("id");
+  <div id="notify" class="notify">
 
-      if (id && GUESTS[id]) {
-        hello.textContent = "Hello, " + GUESTS[id] + "!";
+    <div class="notify-card">
+
+      <div id="notifyIcon" class="notify-icon">✅</div>
+
+      <h3 id="notifyTitle">Success</h3>
+
+      <p id="notifyMessage">
+        Message
+      </p>
+
+      <button id="notifyClose">
+        OK
+      </button>
+
+    </div>
+
+  </div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id");
+
+    if (id && GUESTS[id]) {
+      hello.textContent = "Hello, " + GUESTS[id] + "!";
+    } else {
+      hello.textContent = "Hello, Trainer!";
+    }
+
+    const notify = document.getElementById("notify");
+
+    function showNotify(type, title, message) {
+
+      const icon = document.getElementById("notifyIcon");
+
+      if (type === "success") {
+
+        icon.innerHTML = "✅";
+
+      } else if (type === "error") {
+
+        icon.innerHTML = "❌";
+
       } else {
-        hello.textContent = "Hello, Trainer!";
+
+        icon.innerHTML = "⚠";
+
       }
 
-      const scene = document.getElementById("scene");
-      const welcome = document.getElementById("welcome");
-      const bgm = document.getElementById("bgm");
-      document.getElementById("openBtn").onclick = () => {
-        bgm.play().catch(() => {});
-        launchConfetti(350);
-        welcome.classList.add("hidden");
-        scene.classList.remove("hidden");
-        setTimeout(() => (scene.style.opacity = 1), 50);
-        document.getElementById("music").style.display = "block";
-        let i = 0;
-        const rain = setInterval(() => {
-          launchConfetti(80);
-          i++;
-          if (i >= 10) clearInterval(rain);
-        }, 400);
-      };
-      const c = document.getElementById("fx"),
-        ctx = c.getContext("2d");
-      function rs() {
-        c.width = innerWidth;
-        c.height = innerHeight;
-      }
-      rs();
-      onresize = rs;
+      document.getElementById("notifyTitle").innerHTML = title;
 
-      let confetti = [];
+      document.getElementById("notifyMessage").innerHTML = message;
 
-      function launchConfetti(count = 250) {
-        for (let i = 0; i < count; i++) {
-          confetti.push({
-            x: Math.random() * c.width,
-            y: -20 - Math.random() * c.height,
-            w: 6 + Math.random() * 8,
-            h: 10 + Math.random() * 12,
-            color: [
-              "#FFD700",
-              "#FF4D6D",
-              "#4DA3FF",
-              "#7CFC00",
-              "#FFFFFF",
-              "#FF8C00",
-              "#00E5FF",
-            ][Math.floor(Math.random() * 7)],
-            vx: (Math.random() - 0.5) * 4,
-            vy: 3 + Math.random() * 5,
-            rot: Math.random() * 360,
-            vr: (Math.random() - 0.5) * 12,
-          });
-        }
+      notify.classList.add("show");
+
+    }
+
+    document
+      .getElementById("notifyClose")
+      .onclick = () => {
+
+        notify.classList.remove("show");
+
       }
 
-      (function anim() {
-        requestAnimationFrame(anim);
-        ctx.clearRect(0, 0, c.width, c.height);
-        confetti.forEach((cf) => {
-          cf.x += cf.vx;
-          cf.y += cf.vy;
-          cf.rot += cf.vr;
-          ctx.save();
-          ctx.translate(cf.x, cf.y);
-          ctx.rotate((cf.rot * Math.PI) / 180);
-          ctx.fillStyle = cf.color;
-          ctx.fillRect(-cf.w / 2, -cf.h / 2, cf.w, cf.h);
-          ctx.restore();
+    const scene = document.getElementById("scene");
+    const welcome = document.getElementById("welcome");
+    const bgm = document.getElementById("bgm");
+    document.getElementById("openBtn").onclick = () => {
+      bgm.play().catch(() => { });
+      launchConfetti(350);
+      welcome.classList.add("hidden");
+      scene.classList.remove("hidden");
+      setTimeout(() => (scene.style.opacity = 1), 50);
+      document.getElementById("music").style.display = "block";
+      let i = 0;
+      const rain = setInterval(() => {
+        launchConfetti(80);
+        i++;
+        if (i >= 10) clearInterval(rain);
+      }, 400);
+    };
+    const c = document.getElementById("fx"),
+      ctx = c.getContext("2d");
+    function rs() {
+      c.width = innerWidth;
+      c.height = innerHeight;
+    }
+    rs();
+    onresize = rs;
+
+    let confetti = [];
+
+    function launchConfetti(count = 250) {
+      for (let i = 0; i < count; i++) {
+        confetti.push({
+          x: Math.random() * c.width,
+          y: -20 - Math.random() * c.height,
+          w: 6 + Math.random() * 8,
+          h: 10 + Math.random() * 12,
+          color: [
+            "#FFD700",
+            "#FF4D6D",
+            "#4DA3FF",
+            "#7CFC00",
+            "#FFFFFF",
+            "#FF8C00",
+            "#00E5FF",
+          ][Math.floor(Math.random() * 7)],
+          vx: (Math.random() - 0.5) * 4,
+          vy: 3 + Math.random() * 5,
+          rot: Math.random() * 360,
+          vr: (Math.random() - 0.5) * 12,
         });
-        confetti = confetti.filter((cf) => cf.y < c.height + 40);
-      })();
-
-      // =========================================
-
-      document.getElementById("acceptBtn").onclick = openModal;
-
-      const modal = document.getElementById("inviteModal");
-
-      function openModal() {
-        modal.classList.add("show");
       }
+    }
 
-      function closeModal() {
-        modal.classList.remove("show");
-      }
-
-      document.getElementById("btnCancel").onclick = closeModal;
-
-      modal.onclick = (e) => {
-        if (e.target === modal) {
-          closeModal();
-        }
-      };
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          closeModal();
-        }
+    (function anim() {
+      requestAnimationFrame(anim);
+      ctx.clearRect(0, 0, c.width, c.height);
+      confetti.forEach((cf) => {
+        cf.x += cf.vx;
+        cf.y += cf.vy;
+        cf.rot += cf.vr;
+        ctx.save();
+        ctx.translate(cf.x, cf.y);
+        ctx.rotate((cf.rot * Math.PI) / 180);
+        ctx.fillStyle = cf.color;
+        ctx.fillRect(-cf.w / 2, -cf.h / 2, cf.w, cf.h);
+        ctx.restore();
       });
+      confetti = confetti.filter((cf) => cf.y < c.height + 40);
+    })();
 
-      document.getElementById("btnSubmit").onclick = () => {
-        const ign = document.getElementById("ign").value.trim();
+    // =========================================
 
-        const player = document.getElementById("playerId").value.trim();
+    document.getElementById("acceptBtn").onclick = openModal;
 
-        if (!ign || !player) {
-          alert("Please complete all fields.");
+    const acceptBtn = document.getElementById("acceptBtn");
 
-          return;
+    acceptBtn.onclick = async () => {
+      acceptBtn.disabled = true;
+      acceptBtn.innerHTML = "⏳ Checking...";
+
+      try {
+        const response = await fetch(`https://demo.pandu.id/rebel-api/api/ticket/${id}`);
+
+        const result = await response.json();
+
+        if (result.success) {
+          openModal();
+        } else {
+          showNotify(
+            "error",
+            "Ticket Not Available",
+            result.message
+          );
         }
+      } catch (err) {
+        console.error(err);
+        showNotify(
+          "error",
+          "Registration Failed",
+          "Unable to connect to server."
+        );
+      }
 
-        console.log({
-          ign,
-          player,
+      acceptBtn.disabled = false;
+      acceptBtn.innerHTML = "✅ ACCEPT INVITATION";
+    };
+
+    const modal = document.getElementById("inviteModal");
+
+    function openModal() {
+      modal.classList.add("show");
+    }
+
+    function closeModal() {
+      modal.classList.remove("show");
+    }
+
+    document.getElementById("btnCancel").onclick = closeModal;
+
+    modal.onclick = (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    };
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    });
+
+    document.getElementById("btnSubmit").onclick = async () => {
+      const ign = document.getElementById("ign").value.trim();
+
+      const player = document.getElementById("playerId").value.trim();
+
+      if (!ign || !player) {
+        showNotify(
+          "error",
+          "Information Required",
+          "Please complete all fields."
+        );
+
+        return;
+      }
+
+      try {
+        const response = await fetch(`https://demo.pandu.id/rebel-api/api/register`, {
+          method: "POST",
+          body: JSON.stringify({
+            ticket_id: id,
+            ign: ign,
+            player_id: player
+          }),
         });
 
-        closeModal();
-      };
-    </script>
-    <script src="guest.js"></script>
-  </body>
+        const result = await response.json();
+
+        if(result.success) {
+
+          showNotify(
+            "success",
+            "Registration Successful",
+            "Thank you for registering! See you at the event."
+          );
+
+          //clear form
+          document.getElementById("ign").value = "";
+          document.getElementById("playerId").value = "";
+
+          closeModal();
+
+        } else {
+
+          showNotify(
+            "error",
+            "Registration Failed",
+            result.message
+          );
+
+        }
+
+
+      } catch (err) {
+        console.error(err);
+        showNotify(
+          "error",
+          "Registration Failed",
+          "Unable to connect to server."
+        );
+      }
+
+    };
+  </script>
+  <script src="guest.js"></script>
+</body>
+
 </html>
