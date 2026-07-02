@@ -845,7 +845,7 @@
       acceptBtn.innerHTML = "⏳ Checking...";
 
       try {
-        const response = await fetch(`https://demo.pandu.id/rebel-api/api/ticket/${id}`);
+        const response = await fetch(`https://demo.pandu.id/rebel-api/public/api/invitation/ticket/${id}`);
 
         const result = await response.json();
 
@@ -911,7 +911,7 @@
       }
 
       try {
-        const response = await fetch(`https://demo.pandu.id/rebel-api/api/register`, {
+        const response = await fetch(`https://demo.pandu.id/rebel-api/public/api/invitation/register`, {
           method: "POST",
           body: JSON.stringify({
             ticket_id: id,
