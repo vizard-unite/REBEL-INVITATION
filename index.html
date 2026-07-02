@@ -911,14 +911,18 @@
       }
 
       try {
-        const response = await fetch(`https://demo.pandu.id/rebel-api/public/api/invitation/register`, {
-          method: "GET",
-          body: JSON.stringify({
-            ticket_id: id,
-            ign: ign,
-            player_id: player
-          }),
+        const params = new URLSearchParams({
+          ticket_id: id,
+          ign: ign,
+          player_id: player
         });
+
+        const response = await fetch(
+          `https://demo.pandu.id/rebel-api/public/api/invitation/register?${params.toString()}`,
+          {
+            method: "GET"
+          }
+        );
 
         const result = await response.json();
 
